@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+/* A social-profile world in the shape of today's facebook.com: grey canvas, white cards, one blue. */
+@theme {
+  --color-canvas: #f0f2f5;
+  --color-card: #ffffff;
+  --color-ink: #050505;
+  --color-muted: #65676b;
+  --color-line: #ced0d4;
+  --color-hover: #f2f2f2;
+  --color-field: #f0f2f5;
+  --color-blue: #0866ff;
+  --color-blue-hover: #0759e0;
+  --color-blue-soft: #ebf5ff;
+  --color-danger: #c4122f;
+  --font-sans: "Segoe UI Historic", "Segoe UI", Helvetica, Arial, sans-serif;
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --radius-card: 0.5rem;
+}
+
+html {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  color-scheme: light;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #b9d5ff;
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 2px;
+}
+
+/* A just-arrived post: blue wash that fades into the card. */
+@keyframes post-arrive {
+  from {
+    background-color: var(--color-blue-soft);
+    transform: translateY(-6px);
+  }
+  to {
+    background-color: var(--color-card);
+    transform: none;
+  }
+}
+.post-arrive {
+  animation: post-arrive 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .post-arrive {
+    animation: none;
+  }
+}
